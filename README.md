@@ -68,3 +68,57 @@ lending-club-risk/
 
 ```bash
 pip install -r requirements.txt
+```
+#
+# 前端初版架構
+## 開發環境
+- Node.js 18.14.2 或以上
+- npm 9 或 yarn 1.x
+- Vite 5 +
+
+🚀 專案啟動
+
+1️⃣ 安裝依賴
+```
+cd f2e
+npm install
+```
+
+2️⃣ 啟動開發伺服器
+```
+npm run dev
+```
+
+3️⃣ 開啟瀏覽器
+預設運行於：
+```
+http://localhost:5173/
+```
+
+## API 串接設定
+
+```
+# f2e/.env
+VITE_API_BASE_URL="https://xxxxxx.ngrok-free.app"
+```
+
+## 專案結構
+```
+f2e/
+ ┣ 📂 src/
+ ┃ ┣ 📂 components/
+ ┃ ┃ ┗ RiskForm.vue        # 主表單元件
+ ┃ ┣ 📂 views/
+ ┃ ┃ ┣ HomeView.vue        # 表單頁面
+ ┃ ┃ ┗ ResultView.vue      # 顯示預測結果
+ ┃ ┣ 📂 router/
+ ┃ ┃ ┗ index.ts            # Vue Router 設定
+ ┃ ┣ App.vue               # 主應用入口
+ ┃ ┗ main.ts               # Vue 啟動點
+ ┣ .env                    # API 連線設定
+ ┣ .env.example            # 範例自己cp
+ ┣ package.json
+ ┣ tsconfig.json
+ ┣ vite.config.ts
+ ┗ README.md
+```

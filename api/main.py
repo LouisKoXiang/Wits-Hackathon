@@ -8,9 +8,17 @@
 # =========================================
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf
 import joblib, json, numpy as np, os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# -----------------------------------------
+# 載入環境變數
+# -----------------------------------------
+load_dotenv()
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
 
 # -----------------------------------------
 # 自動偵測 model 資料夾路徑
@@ -35,6 +43,17 @@ COLUMNS_PATH = MODEL_DIR / "columns.json"
 # 初始化 FastAPI
 # -----------------------------------------
 app = FastAPI(title="Lending Club Risk Predictor API")
+
+# -----------------------------------------
+# 啟用 CORS
+# -----------------------------------------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,  # e.g. ["http://localhost:5173", "https://24e9c065aad7.ngrok-free.app"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # -----------------------------------------
 # 檢查模型檔案是否存在
@@ -69,7 +88,6 @@ def predict(data: dict):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"預測失敗: {str(e)}")
 
-    # 設定風險等級（門檻可依實際模型調整）
     if pred > 0.8:
         risk_level = "Low"
     elif pred > 0.4:
