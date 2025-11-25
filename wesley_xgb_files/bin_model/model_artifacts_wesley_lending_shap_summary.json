@@ -1,27 +1,27 @@
 [
     {
         "Feature_EN": "sub_grade",
-        "Mean_Absolute_SHAP_Value": 0.12517348076012202,
+        "Mean_Absolute_SHAP_Value": 0.1090416987493202,
         "Feature_CN": "次級信用評級 (數值化)"
     },
     {
-        "Feature_EN": "int_rate",
-        "Mean_Absolute_SHAP_Value": 0.03717862018365666,
-        "Feature_CN": "貸款利率"
-    },
-    {
-        "Feature_EN": "annual_inc",
-        "Mean_Absolute_SHAP_Value": 0.03223633114815478,
-        "Feature_CN": "年收入"
-    },
-    {
         "Feature_EN": "dti",
-        "Mean_Absolute_SHAP_Value": 0.030516074800924487,
+        "Mean_Absolute_SHAP_Value": 0.03707939109979372,
         "Feature_CN": "債務收入比"
     },
     {
-        "Feature_EN": "open_acc",
-        "Mean_Absolute_SHAP_Value": 0.030123760911904055,
-        "Feature_CN": "開放信用額度數"
+        "Feature_EN": "loan_amnt",
+        "Mean_Absolute_SHAP_Value": 0.03697905679939746,
+        "Feature_CN": "貸款金額"
+    },
+    {
+        "Feature_EN": "annual_inc",
+        "Mean_Absolute_SHAP_Value": 0.03651953126513953,
+        "Feature_CN": "年收入"
+    },
+    {
+        "Feature_EN": "term_60_months",
+        "Mean_Absolute_SHAP_Value": 0.027724230816803884,
+        "Feature_CN": "貸款期限 (月) (60_months 個月)"
     }
 ]
