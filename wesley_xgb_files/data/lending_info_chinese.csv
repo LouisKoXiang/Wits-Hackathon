@@ -1,22 +1,27 @@
-欄位名稱 (英文),範圍,英文解釋 (English Explanation),中文翻譯 (Chinese Translation),中文解釋與備註 (Chinese Explanation & Note)
-loan_amnt,,The amount listed in the loan application.,貸款金額,借款人最初申請的貸款總金額。
-term,"36 months, 60 months",The number of scheduled payments on the loan.,期限/期數,貸款的還款期數（例如：36 個月或 60 個月）。
-int_rate,,Interest Rate on the loan.,利率,"貸款的年利率（Annual Percentage Rate, APR）。"
-installment,,The monthly payment owed by the borrower.,分期付款金額,借款人每月必須償還的金額。
-grade,A ~ G,"The loan grade assigned by the bank (A, B, C, etc.).",貸款等級（主級）,信用機構分配的貸款總體風險等級。
-sub_grade,A1 ~ A5 ~ G1 ~ G5,"The sub-grade of the loan grade (A1, A2, B1, etc.).",貸款子等級,貸款等級的進一步細分。
-emp_title,,The job title supplied by the borrower.,職位名稱,借款人的工作職位。
-emp_length,,Employment length in years.,職位長度,借款人目前的工作年資。
-home_ownership,"RENT, MORTGAGE, OWN",The home ownership status of the borrower.,房屋所有權,"借款人的房屋狀態（如 RENT/租賃, MORTGAGE/抵押）。"
-annual_inc,,The annual income supplied by the borrower.,年收入,借款人提供的每年總收入。
-verification_status,"Not Verified,  Source Verified, Verified",Indicates if income was verified by the bank.,驗證狀態,收入是否已經過銀行驗證。
-issue_d,,The month in which the loan was funded.,核發月份,貸款發放的月份。
-loan_status,"*這是預測目標, 不可填","Current status of the loan (e.g., Fully Paid or Charged Off).",貸款狀態,目標標籤：貸款目前是否已付清或已違約。
-purpose,,A category provided by the borrower for the loan purpose.,目的,借款人申請貸款的主要用途類別。
-dti,0~1,A ratio calculated using the borrower's total monthly debt payments.,債務收入比,每月債務支付佔每月總收入的百分比。
-earliest_cr_line,格式 : Jun-06 (代表2006年6月),The date the borrower's earliest credit line was opened.,最早信用紀錄日期,借款人最早開立信用額度的日期。
-open_acc,,The number of open credit accounts in the borrower's file.,開立帳戶數,借款人目前持有的活躍信用帳戶數量。
-pub_rec,,"Number of derogatory public records (e.g., bankruptcies).",公共紀錄,不良公共紀錄的數量（例如：破產）。
-revol_bal,,Total credit revolving balance.,循環餘額,借款人信用卡上未償還的總餘額。
-revol_util,,Revolving line utilization rate.,循環使用率,已使用信用額度佔總額度的百分比。
-address,,The address provided by the borrower.,地址,借款人提供的地址資訊。
+欄位名稱 (英文),範圍,英文解釋 (English Explanation),中文翻譯 (Chinese Translation),中文解釋與備註 (Chinese Explanation & Note),,,,,
+loan_amnt,,The amount listed in the loan application.,貸款金額,借款人最初申請的貸款總金額。,,,,,
+term,"36 months, 60 months",The number of scheduled payments on the loan.,期限/期數,貸款的還款期數（例如：36 個月或 60 個月）。,,,,,
+int_rate,,Interest Rate on the loan.,利率,"貸款的年利率（Annual Percentage Rate, APR）。",,,,,
+installment,,The monthly payment owed by the borrower.,分期付款金額,借款人每月必須償還的金額。,,,,,
+grade,A ~ G,"The loan grade assigned by the bank (A, B, C, etc.).",貸款等級（主級）,信用機構分配的貸款總體風險等級。,,,,,
+sub_grade,A1 ~ A5 ~ G1 ~ G5,"The sub-grade of the loan grade (A1, A2, B1, etc.).",貸款子等級,貸款等級的進一步細分。,,,,,
+emp_title,,The job title supplied by the borrower.,職位名稱,借款人的工作職位。,,,,,
+emp_length,,Employment length in years.,職位長度,借款人目前的工作年資。,,,,,
+home_ownership,"RENT, MORTGAGE, OWN",The home ownership status of the borrower.,房屋所有權,"借款人的房屋狀態（如 RENT/租賃, MORTGAGE/抵押）。",,,,,
+annual_inc,,The annual income supplied by the borrower.,年收入,借款人提供的每年總收入。,,,,,
+verification_status,"Not Verified,  Source Verified, Verified",Indicates if income was verified by the bank.,驗證狀態,收入是否已經過銀行驗證。,,,,,
+issue_d,,The month in which the loan was funded.,核發月份,貸款發放的月份。,,,,,
+loan_status,"*這是預測目標, 不可填","Current status of the loan (e.g., Fully Paid or Charged Off).",貸款狀態,目標標籤：貸款目前是否已付清或已違約。,,,,,
+purpose,,A category provided by the borrower for the loan purpose.,目的,借款人申請貸款的主要用途類別。,,,,,
+dti,0~100 [%不用輸入],A ratio calculated using the borrower's total monthly debt payments.,債務收入比,每月債務支付佔每月總收入的百分比。,,,,,
+earliest_cr_line,格式 : Jun-06 (代表2006年6月),The date the borrower's earliest credit line was opened.,最早信用紀錄日期,借款人最早開立信用額度的日期。,,,,,
+open_acc,,The number of open credit accounts in the borrower's file.,開立帳戶數,借款人目前持有的活躍信用帳戶數量。,,,,,
+pub_rec,,"Number of derogatory public records (e.g., bankruptcies).",公共紀錄,不良公共紀錄的數量（例如：破產）。,,,,,
+revol_bal,,Total credit revolving balance.,循環餘額,借款人信用卡上未償還的總餘額。,,,,,
+revol_util,0~100 [%不用輸入],Revolving line utilization rate.,循環使用率,已使用信用額度佔總額度的百分比。,,,,,
+total_acc,,Total account,累積曾經開過的信用帳戶總數,"包含已關閉與開放中帳戶, 用來看信用歷史深度",,,,,
+initial_list_status,"w, f",,"放款平台, w (whole loan 全部), f (fractional 部份/切割)",,,,,,
+application_type,"INDIVIDUAL, JOINT",Application Type,"申請類型, INDIVIDUAL(個人申請), JOINT(聯合申請, 例如夫妻)",,,,,,
+mort_acc,,Mortage Account,抵押貸款戶數,,,,,,
+pub_rec_bankruptcies,,Public Record Bankruptcies,破產紀錄次數,,,,,,
+address,,The address provided by the borrower.,地址,借款人提供的地址資訊。,,,,,
