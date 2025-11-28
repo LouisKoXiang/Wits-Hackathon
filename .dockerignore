@@ -1,0 +1,47 @@
+# Virtual env
+venv/
+.env
+*.env
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Git / IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+.DS_Store
+
+# Jupyter
+*.ipynb
+.ipynb_checkpoints/
+
+# Frontend
+f2e/
+
+# Data / large CSV
+data/
+*.csv
+*.xlsx
+
+# 訓練時產生的中間檔案
+*.joblib
+*.pickle
+
+# 不需要 deploy 的文件
+LICENSE
+README.md
+
+
+venv/
+__pycache__/
+*.ipynb
+ml_module/**/*.ipynb
+f2e/
+.git
+.gitignore
+.DS_Store
