@@ -1,0 +1,8 @@
+name,loan_amnt,annual_inc,dti,int_rate,term,installment,grade,sub_grade,emp_title,emp_length,home_ownership,verification_status,issue_d,purpose,earliest_cr_line,open_acc,pub_rec,revol_bal,revol_util,address
+T1,12000,65000,15.2,10.49,36 months,389.98,B,B3,Paralegal,4 years,RENT,Source Verified,23-Jul,debt_consolidation,Oct-2025,9,0,8950,45.6,"185 King St, Apt 2C, Newark, NJ 07102"
+T2,5000,32000,8.8,7.99,36 months,156.66,A,A4,Warehouse Worker,1 year,RENT,Not Verified,24-May,medical,Jan-1998,6,0,2100,18.2,"55 Willow Ave, Apt 1A, Austin, TX 78704"
+T3,25000,110000,24.1,16.99,60 months,620.37,C,C5,Senior Developer,10+ years,MORTGAGE,Verified,22-Dec,credit_card,Jan-1998,15,1,35000,72.5,"902 S 1st St, Dallas, TX 75201"
+T4,8000,48000,10.5,13.67,36 months,272.24,C,C3,Customer Service Rep,7 years,OWN,Source Verified,23-Sep,car,Jun-2025,11,0,4500,29.1,"33 Oak Ln, Orlando, FL 32801"
+T5,35000,180000,19.4,9.99,60 months,742.66,B,G1,Director of Ops,9 years,MORTGAGE,Verified,22-Apr,major_purchase,Oct-2025,21,0,51000,85.9,"77 Sunset Blvd, Los Angeles, CA 90028"
+T6,335000,80000,21.4,16.99,60 months,742.66,B,G5,Director of Ops,9 years,MORTGAGE,Verified,22-Apr,major_purchase,Oct-2025,21,0,51000,85.9,"77 Sunset Blvd, Los Angeles, CA 90028"
+T7,325000,110000,24.1,16.99,60 months,620.37,C,C5,Senior Developer,10+ years,MORTGAGE,Verified,22-Dec,credit_card,Jan-1998,15,1,35000,72.5,"902 S 1st St, Dallas, TX 75201"
