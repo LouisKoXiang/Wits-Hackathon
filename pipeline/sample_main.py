@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import joblib
-from loan_predictor import LoanPredictor 
+from loan_predictor_package import LoanPredictor 
 
 if __name__ == "__main__":
     
