@@ -20,6 +20,7 @@ class RedisMemory:
                 host=os.getenv("REDIS_HOST", "localhost"),
                 port=int(os.getenv("REDIS_PORT", "6379")),
                 password=os.getenv("REDIS_PASSWORD", None),
+                username="default",
                 decode_responses=True,   # 自動把 bytes 轉成字串
             )
         else:

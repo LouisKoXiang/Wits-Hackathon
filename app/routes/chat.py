@@ -204,7 +204,6 @@ def _personalized_suggestions(
     # 有預測結果
     if prediction:
 
-        # prob = prediction.probability
         level = prediction.risk_level
 
         # 依風險等級推薦問題
@@ -321,7 +320,7 @@ def chat_api(payload: ChatRequest):
     | **decision_label**    | `"LOW_RISK" / "MEDIUM_RISK" / "HIGH_RISK"` | 模型對該客戶的風險分類。               |
     | **threshold**         | `number`                                   | 分界值（目前固定 0.5）。             |
     | **risk_level**        | `"LOW" / "MEDIUM" / "HIGH"`                | 更易理解的風險等級。                 |
-    | **shap_top_features** | `list`                                     | SHAP 排名前五的重要特徵。            |
+    | **shap_top_features** | `list`                                     | 模型 SHAP 由訓練結果提供 |
     | **policies**          | `object`                                   | 銀行授信政策建議（按風險調整）。           |
     | **meta**              | `object`                                   | 模型資訊（feature 數量、bank_id…）。 |
     ---
@@ -343,7 +342,7 @@ def chat_api(payload: ChatRequest):
     last_form_data = session["last_form_data"]
 
     # ---- Step 2. 有傳 form_data → 重新跑預測
-    prediction_obj = None
+    prediction_obj: Optional[LoanPredictResponse] = None
     if payload.form_data is not None:
         prediction_obj = predict_loan_risk(payload.form_data, payload.bank_id)
 
@@ -391,9 +390,9 @@ def chat_api(payload: ChatRequest):
          sys.append(
             "模型輸出的 probability 是『還款機率（repay probability）』，不是違約機率。"
             "請務必使用以下邏輯回答："
-            "還款機率 = probability；違約機率 = 1 - probability。"
-            "請根據 risk_level 解釋此客戶是高、中或低風險，並避免混淆。"
-            "回覆請描述該客戶的風險狀態，而不是對客戶說明。"
+            "還款機率 = probability；還款違約機率 = 1 - probability。"
+            "threshold 來自模型訓練時的最佳門檻，請根據 risk_level 解釋此申請案屬於高、中或低風險，並避免混淆。"
+            "回覆請描述該客戶的風險狀態與授信考量，而不是對客戶說明。"
         )
 
     elif intent == "shap":
@@ -402,30 +401,44 @@ def chat_api(payload: ChatRequest):
             shap_list = [s.model_dump() for s in prediction_obj.shap_top_features]
 
         if shap_list:
-            sys.append("以下是 SHAP Top 特徵 (JSON)：")
+            sys.append("以下是模型整體 SHAP 重要特徵摘要 (JSON)：")
             sys.append(json.dumps(shap_list, ensure_ascii=False))
 
-        sys.append("請說明哪些特徵影響最大，以及影響方向。")
+        sys.append(
+            "請說明在『模型整體層級』，哪些特徵對風險判斷影響最大，"
+            "並描述這些特徵變動時，通常會如何拉高或降低風險。"
+        )
 
     elif intent == "analyze":
-        sys.append("請以『授信審查摘要』的格式提供回覆，包含：風險定位、主要驅動因子、建議授信策略（2~3 點）。")
+        sys.append(
+            "請以『授信審查摘要』的格式提供回覆，包含："
+            "1) 風險定位（結合 risk_level 與 probability）；"
+            "2) 主要驅動因子（可引用 SHAP 特徵）；"
+            "3) 建議授信策略（2–3 點），如額度、利率、是否建議補件等。"
+        )
 
     elif intent == "memory":
         sys.append(
-        "使用者正在詢問之前提供的資料。請根據 JSON 回憶該客戶的欄位與模型結果，"
-        "並以『系統提供資料』的角度回答。"
+            "使用者正在詢問之前提供的資料。請根據 JSON 回憶該客戶的欄位與模型結果，"
+            "並以『系統提供資料』的角度回答，整理出先前填寫的關鍵數值與當時的風險判斷。"
         )
 
     elif intent == "small_talk":
-        sys.append("使用者正在進行非技術性對話。請保持簡短、正式、中性，避免使用第二人稱，請他問本系統相關問題")
+        sys.append(
+            "使用者正在進行非技術性對話。請保持簡短、正式、中性，避免使用第二人稱，"
+            "並適度引導其回到本系統的用途，例如風險分析、授信建議、特徵解釋等問題。"
+        )
 
     else:
-        sys.append("意圖無法辨識，請提示經辦可詢問：風險、特徵影響、授信建議等主題。")
+        sys.append(
+            "意圖無法辨識，請提示經辦可詢問：風險、特徵影響、授信建議、"
+            "或請求整理先前輸入的欄位資料等主題。"
+        )
 
     system_prompt = "\n\n".join(sys)
 
     # ---- Step 6. 完整訊息（含歷史）
-    messages = [{"role": "system", "content": system_prompt}]
+    messages: List[Dict[str, str]] = [{"role": "system", "content": system_prompt}]
 
     for msg in history[-8:]:
         messages.append(msg)

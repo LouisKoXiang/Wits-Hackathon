@@ -1,8 +1,8 @@
 from typing import List
 from fastapi import APIRouter, Query
 
-from app.ml_module.xgb_loader import load_xgb_artifacts
 from app.schemas.loan_schema import ShapTopFeature
+from app.ml_module.model_pipeline.artifacts_loader import load_shap_summary
 
 router = APIRouter(prefix="/shap", tags=["SHAP 分析"])
 
@@ -37,5 +37,5 @@ def shap_summary(top_k: int = Query(10, ge=1, le=50)):
     """
     回傳整體模型的 SHAP 重要特徵 Top K。
     """
-    artifacts = load_xgb_artifacts()
-    return shap_top_features_local(artifacts.shap_summary, top_k=top_k)
+    shap_raw = load_shap_summary()
+    return shap_top_features_local(shap_raw, top_k=top_k)

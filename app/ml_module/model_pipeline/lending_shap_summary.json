@@ -1,0 +1,27 @@
+[
+    {
+        "Feature_EN": "sub_grade",
+        "Mean_Absolute_SHAP_Value": 0.10776557882769751,
+        "Feature_CN": "次級信用評級"
+    },
+    {
+        "Feature_EN": "loan_amnt",
+        "Mean_Absolute_SHAP_Value": 0.07259883309673296,
+        "Feature_CN": "貸款金額"
+    },
+    {
+        "Feature_EN": "installment",
+        "Mean_Absolute_SHAP_Value": 0.04179871925652811,
+        "Feature_CN": "月付款"
+    },
+    {
+        "Feature_EN": "annual_inc",
+        "Mean_Absolute_SHAP_Value": 0.03803649163972065,
+        "Feature_CN": "年收入"
+    },
+    {
+        "Feature_EN": "dti",
+        "Mean_Absolute_SHAP_Value": 0.03770672522622158,
+        "Feature_CN": "債務收入比"
+    }
+]
