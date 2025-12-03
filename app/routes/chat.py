@@ -391,8 +391,8 @@ def chat_api(payload: ChatRequest):
             "模型輸出的 probability 是『還款機率（repay probability）』，不是違約機率。"
             "請務必使用以下邏輯回答："
             "還款機率 = probability；還款違約機率 = 1 - probability。"
-            "threshold 來自模型訓練時的最佳門檻，請根據 risk_level 解釋此申請案屬於高、中或低風險，並避免混淆。"
-            "回覆請描述該客戶的風險狀態與授信考量，而不是對客戶說明。"
+            "請根據 risk_level 解釋此客戶是高、中或低風險，並避免混淆。"
+            "回覆請描述該客戶的風險狀態，而不是對客戶說明。"
         )
 
     elif intent == "shap":
@@ -410,12 +410,8 @@ def chat_api(payload: ChatRequest):
         )
 
     elif intent == "analyze":
-        sys.append(
-            "請以『授信審查摘要』的格式提供回覆，包含："
-            "1) 風險定位（結合 risk_level 與 probability）；"
-            "2) 主要驅動因子（可引用 SHAP 特徵）；"
-            "3) 建議授信策略（2–3 點），如額度、利率、是否建議補件等。"
-        )
+        sys.append("請以『授信審查摘要』的格式提供回覆，包含：風險定位、主要驅動因子、建議授信策略（2~3 點）。" )
+        
 
     elif intent == "memory":
         sys.append(
