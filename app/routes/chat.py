@@ -390,7 +390,7 @@ def chat_api(payload: ChatRequest):
          sys.append(
             "模型輸出的 probability 是『還款機率（repay probability）』，不是違約機率。"
             "請務必使用以下邏輯回答："
-            "還款機率 = probability；還款違約機率 = 1 - probability。"
+            "還款機率 = probability；還款機率 = 1 - probability。"
             "請根據 risk_level 解釋此客戶是高、中或低風險，並避免混淆。"
             "回覆請描述該客戶的風險狀態，而不是對客戶說明。"
         )
@@ -416,7 +416,7 @@ def chat_api(payload: ChatRequest):
     elif intent == "memory":
         sys.append(
             "使用者正在詢問之前提供的資料。請根據 JSON 回憶該客戶的欄位與模型結果，"
-            "並以『系統提供資料』的角度回答，整理出先前填寫的關鍵數值與當時的風險判斷。"
+            "並以『系統提供資料』的角度回答。"
         )
 
     elif intent == "small_talk":
