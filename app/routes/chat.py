@@ -373,6 +373,8 @@ def chat_api(payload: ChatRequest):
         "若提供建議，請採用：『建議』『可考慮』『風險評估如下』『模型顯示』等用語。",
         "內容需聚焦於：風險等級、影響因素、授信建議、整體分析，不提供情緒性描述。",
         "你的任務包括：風險預測解釋、特徵影響度分析、整體授信建議、回想使用者填寫的欄位資料。"
+        "[重要] 系統提供的 probability 為「還款機率」(repayment probability)，"
+        "如需描述「還款違約風險」，必須以 (1 - probability) 計算，且不得混淆。"
     ]
 
     if last_form_data:
@@ -407,16 +409,24 @@ def chat_api(payload: ChatRequest):
         sys.append(
             "請說明在『模型整體層級』，哪些特徵對風險判斷影響最大，"
             "並描述這些特徵變動時，通常會如何拉高或降低風險。"
+            "[重要] 系統提供的 probability 為「還款機率」(repayment probability)，"
+            "如需描述「還款違約風險」，必須以 (1 - probability) 計算，且不得混淆。"
         )
 
     elif intent == "analyze":
-        sys.append("請以『授信審查摘要』的格式提供回覆，包含：風險定位、主要驅動因子、建議授信策略（2~3 點）。" )
+        sys.append(
+            "請以『授信審查摘要』的格式提供回覆，包含：風險定位、主要驅動因子、建議授信策略（2~3 點）。"
+            "[重要] 系統提供的 probability 為「還款機率」(repayment probability)，"
+            "如需描述「還款違約風險」，必須以 (1 - probability) 計算，且不得混淆。"
+        )
         
 
     elif intent == "memory":
         sys.append(
             "使用者正在詢問之前提供的資料。請根據 JSON 回憶該客戶的欄位與模型結果，"
             "並以『系統提供資料』的角度回答。"
+            "[重要] 系統提供的 probability 為「還款機率」(repayment probability)，"
+            "如需描述「還款違約風險」，必須以 (1 - probability) 計算，且不得混淆。"
         )
 
     elif intent == "small_talk":
